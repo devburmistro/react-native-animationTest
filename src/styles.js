@@ -7,15 +7,16 @@ export const styles = StyleSheet.create({
 		backgroundColor: 'white'
 	},
 	blackAnimationContainer: {
+		alignItems: 'center',
+		justifyContent: 'center',
 		position: 'absolute',
 		top: -WINDOW_HEIGHT,
-		width: WINDOW_WIDTH,
+		left: ( WINDOW_WIDTH - WINDOW_HEIGHT ) / 2,
 		height: WINDOW_HEIGHT,
+		width: WINDOW_HEIGHT,
 		backgroundColor: 'black',
-		borderBottomRightRadius: WINDOW_WIDTH / 2,
-		borderBottomLeftRadius: WINDOW_WIDTH / 2,
-		alignItems: 'center',
-		justifyContent: 'center'
+		borderBottomRightRadius: WINDOW_HEIGHT / 2,
+		borderBottomLeftRadius: WINDOW_HEIGHT / 2
 	},
 	startBtnContainer: {
 		marginTop: WINDOW_HEIGHT / 2 - 20,

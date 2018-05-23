@@ -7,32 +7,37 @@ export class MainScreen extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			blackAnimateView: new Animated.Value(-WINDOW_HEIGHT),
-			borderRadius: new Animated.Value(WINDOW_WIDTH / 2),
+			borderRadius: new Animated.Value(WINDOW_HEIGHT / 2),
+			radius: new Animated.Value(WINDOW_HEIGHT),
+			left: new Animated.Value((WINDOW_WIDTH - WINDOW_HEIGHT) / 2)
 		}
 	}
 	
 	onNextAction = () => {
-		alert('end!');
+		// alert('end!');
 	};
 	
 	onStartAnimation = () => {
-		const { blackAnimateView, borderRadius } = this.state;
+		const { blackAnimateView, borderRadius, radius, left } = this.state;
 
 		Animated.parallel([
-			Animated.timing(blackAnimateView, {
-				toValue: 0,
-				duration: 5000
-			}),
 			Animated.timing(borderRadius, {
-				toValue: 0,
-				duration: 5000
+				toValue: (WINDOW_HEIGHT * 2.25) / 2,
+				duration: 1000
+			}),
+			Animated.timing(left, {
+				toValue: (WINDOW_WIDTH - WINDOW_HEIGHT * 2.25) / 2,
+				duration: 1000
+			}),
+			Animated.timing(radius, {
+				toValue: WINDOW_HEIGHT * 2.25,
+				duration: 1000
 			}),
 		]).start(this.onNextAction);
 	};
 
 	render() {
-		const { blackAnimateView, borderRadius } = this.state;
+		const { blackAnimateView, borderRadius, radius, left } = this.state;
 		
 		return (
 			<View style={styles.container}>
@@ -40,8 +45,13 @@ export class MainScreen extends Component {
 					<Text style={styles.whiteText}>Start!</Text>
 				</TouchableOpacity>
 				<Animated.View
-					style={[styles.blackAnimationContainer,
-						{ top: blackAnimateView, borderBottomRightRadius: borderRadius, borderBottomLeftRadius: borderRadius }]
+					style={[styles.blackAnimationContainer, {
+						height: radius,
+						width: radius,
+						borderBottomRightRadius: borderRadius,
+						borderBottomLeftRadius: borderRadius,
+						left: left
+						}]
 					}
 				>
 					<Text style={styles.whiteText}>BLACK VIEW(SECOND)</Text>
