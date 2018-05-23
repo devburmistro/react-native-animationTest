@@ -22,11 +22,11 @@ export class MainScreen extends Component {
 		Animated.parallel([
 			Animated.timing(blackAnimateView, {
 				toValue: 0,
-				duration: 1500
+				duration: 5000
 			}),
 			Animated.timing(borderRadius, {
 				toValue: 0,
-				duration: 1500
+				duration: 5000
 			}),
 		]).start(this.onNextAction);
 	};
